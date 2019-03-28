@@ -2,11 +2,12 @@
 
 Some checks for Kubernetes clusters, which can be use with Nagios, Zabbix, Icinga, or any other
 monitoring system that can be configured to use an external shell script.
+
 Too much remaining from colebrooke's work to really be its own thing, too much changed to really be the same.
 
 Rrefactored to:
 
-  - simplified single line output for checks
+  - give simplified single line output for checks
   - provide some basic stats output for checks
   - use token authentication for k8s API
   - remove option to use kubectl instead
@@ -67,7 +68,9 @@ OK - 4 of 4 conditions are healthy.| cpu=2;; ephemeral-storage=4693288543;; huge
 $
 ```
 ```
+$ ./check_k8s_node.sh -t "$TOKEN" -a "$APIURL" kube-worker001
 CRITICAL - Node is unreachable.
+$
 ```
 
 ### check_k8s_deploys.sh
