@@ -6,7 +6,7 @@ set > /tmp/set
 function usage() {
         if [ -t 0 ]; then
                 cat << _EOF_
-Usage: $(basename $0) [-t token] [-c curlcmd ] [-a apiurl] [-n namespace]
+Usage: $(basename $0) [-t token] [-c curlcmd ] [-a apiurl] [-n namespace] [-p podname]
 
    -t <token>        # barer toekn for api authorization
    -c <curlcmd>      # override the default curl command line
@@ -17,7 +17,7 @@ Usage: $(basename $0) [-t token] [-c curlcmd ] [-a apiurl] [-n namespace]
 _EOF_
                 exit 0
         else
-                nagios 2 "Usage: $(basename $0) [-t token] [-c curlcmd ] [-a apiurl] [-n namespace] [-p podename]"
+                nagios 2 "Usage: $(basename $0) [-t token] [-c curlcmd ] [-a apiurl] [-n namespace] [-p podname]"
         fi
 }
 
