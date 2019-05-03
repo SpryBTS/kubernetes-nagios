@@ -15,6 +15,19 @@ Rrefactored to:
 
 Just because that suited my needs better.
 
+### nagios-rbac.yaml
+
+A kubernetes manifest to create a service account and associated role for use with these plugins.
+
+Apply the manifest:
+```
+kubectl apply -f ./nagios-rbac.yaml
+```
+
+Extract the created token:
+```
+kubectl get secret  -o 'jsonpath={.data.token}' -n kube-system $(kubectl get secret -n kube-system | awk '/^nagios/{print $1}') | base64 --decode; echo
+```
 
 ### check_kube_cluster.sh
 

@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: kube-system
+  name: nagios
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  namespace: kube-system
+  name: nagios
+rules:
+- nonResourceURLs:
+  - /healthz
+  - /healthz/*
+  verbs:
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  - pods
+  - nodes
+  verbs:
+  - list
+- apiGroups:
+  - "extensions"
+  resources:
+  - deployments
+  verbs:
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  namespace: kube-system
+  name: nagios
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: nagios
+subjects:
+  - kind: ServiceAccount
+    name: nagios
+    namespace: kube-system
