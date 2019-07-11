@@ -1,4 +1,4 @@
-## kubernetes-nagios
+# kubernetes-nagios
 
 Some checks for Kubernetes clusters, which can be use with Nagios, Zabbix, Icinga, or any other
 monitoring system that can be configured to use an external shell script.
@@ -27,7 +27,12 @@ kubectl apply -f ./nagios-rbac.yaml
 Extract the created token:
 ```
 kubectl get secret  -o 'jsonpath={.data.token}' -n kube-system $(kubectl get secret -n kube-system | awk '/^nagios/{print $1}') | base64 --decode; echo
-```
+
+### nagios
+
+Some example nagios configurations making use of the plugins to check a kubernetes cluster.
+
+# check scripts
 
 ### check_kube_cluster.sh
 
