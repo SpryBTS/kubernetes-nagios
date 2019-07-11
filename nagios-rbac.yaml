@@ -27,6 +27,7 @@ rules:
   - "extensions"
   resources:
   - deployments
+  - replicasets
   verbs:
   - list
 ---
@@ -43,3 +44,4 @@ subjects:
   - kind: ServiceAccount
     name: nagios
     namespace: kube-system
+---
