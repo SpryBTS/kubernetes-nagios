@@ -27,6 +27,7 @@ kubectl apply -f ./nagios-rbac.yaml
 Extract the created token:
 ```
 kubectl get secret  -o 'jsonpath={.data.token}' -n kube-system $(kubectl get secret -n kube-system | awk '/^nagios/{print $1}') | base64 --decode; echo
+```
 
 ### nagios
 
