@@ -103,8 +103,6 @@ code=0
 for name in $names; do
 	query=$(eval $CURLCMD "$APIURL/apis/extensions/v1beta1/namespaces/$name/replicasets/")
 
-	echo $query | jq . > $name-replicas.json
-
         if [ -z "$query" ]; then
                 nagios 2 "Unable to query $name for replicasets: $APIURL"
         fi
