@@ -183,7 +183,7 @@ if [ "$badstatus_cnt" -gt 0 ]; then
 fi
 
 stats=$(printf "allreplcs=%d;; healthy=%d;; unhealthy=%d;; mismatch=%d" \
-        $allreplcs_cnt $podsmatch_cnt $badreplcs_cnt, $badstatus_cnt
+        $allreplcs_cnt $podsmatch_cnt $badreplcs_cnt $badstatus_cnt
 )
 
 nagios $code "$text|$stats"
