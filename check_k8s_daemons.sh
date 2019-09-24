@@ -161,7 +161,7 @@ for name in $names; do
 	done
 done
 
-text=$(printf "%d of %d replicaset%s healthy." \
+text=$(printf "%d of %d daemonset%s healthy." \
         $podsmatch_cnt $alldaemons_cnt \
         "$([[ $allnode_cnt -eq 1 ]] && echo ' is' || echo 's are')"
 )
